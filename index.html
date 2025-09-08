@@ -3,217 +3,151 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Personal developer portfolio and projects." />
+  <title>USP E‑Portfolio — Your Name</title>
+  <meta name="description" content="Undergraduate Scholars Program E‑Portfolio for Your Name" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0b0d10;
-      --panel: #11151a;
-      --text: #e9eef2;
-      --muted: #b9c2cc;
-      --brand: #66d9e8;
-      --brand-2: #a78bfa;
-      --ok: #22c55e;
-      --warn: #f59e0b;
-      --radius: 16px;
-      --shadow: 0 8px 30px rgba(0,0,0,.25);
-    }
+  :root{
+    --bg:#ffffff; --panel:#ffffff; --text:#111827; --muted:#6b7280;
+    --brand:#2563eb; --brand2:#111827; --radius:12px; --shadow:0 8px 24px rgba(17,24,39,.06);
+    --line:#e5e7eb;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;letter-spacing:.1px}
+  a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+  .container{width:min(980px,92%);margin:0 auto}
 
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f7f8fb;
-        --panel: #ffffff;
-        --text: #0b0d10;
-        --muted: #586178;
-        --brand: #0ea5e9;
-        --brand-2: #7c3aed;
-        --shadow: 0 8px 30px rgba(0,0,0,.07);
-      }
-    }
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .mark{width:10px;height:10px;border-radius:50%;background:var(--brand)}
+  nav a{margin-left:18px;color:var(--text);opacity:.8;font-weight:600}
+  nav a:hover{opacity:1}
 
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
-    a { color: var(--brand); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  main{padding-bottom:60px}
+  section{padding:48px 0}
+  h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 10px}
+  h2{font-size:clamp(22px,3vw,28px);margin:0 0 14px}
+  h3{margin:6px 0 4px}
+  p{margin:0 0 10px}
 
-    .container { width: min(1100px, 92%); margin: 0 auto; }
+  .grid{display:grid;gap:16px}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
 
-    /* Header */
-    header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(8px); background: color-mix(in srgb, var(--bg) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--muted) 25%, transparent); z-index: 10; }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .dot { width: 12px; height: 12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-radius: 50%; box-shadow: 0 0 24px color-mix(in srgb, var(--brand) 60%, transparent); }
-    nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity: .85; }
-    nav a:hover { opacity: 1; }
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+  .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;padding:56px 0 8px}
+  .hero p{color:var(--muted)}
+  .pfp,.media{width:100%;border-radius:10px;border:1px solid var(--line)}
 
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; padding: 64px 0 24px; }
-    .hero h1 { font-size: clamp(28px, 4.2vw, 48px); line-height: 1.15; margin: 0 0 12px; }
-    .hero p { margin: 0 0 18px; color: var(--muted); }
-    .tagrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 26px; }
-    .tag { padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--panel) 60%, transparent); border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent); font-size: 14px; }
-    .cta { display: flex; gap: 12px; }
-    .btn { display: inline-block; padding: 12px 16px; border-radius: 12px; font-weight: 700; border: 1px solid transparent; box-shadow: var(--shadow); }
-    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
-    .btn.ghost { background: var(--panel); color: var(--text); border-color: color-mix(in srgb, var(--muted) 35%, transparent); }
+  .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+  .tag{padding:6px 10px;border-radius:999px;background:#f3f4f6;border:1px solid var(--line);font-size:13px;color:#374151}
+  .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;border:1px solid var(--line);background:#111827;color:#fff}
+  .btn.primary{background:var(--brand);border-color:var(--brand)}
+  .btn.ghost{background:#fff;color:var(--text)}
 
-    .card { background: var(--panel); border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .pfp { width: 100%; aspect-ratio: 1/1; border-radius: 18px; background: linear-gradient(135deg, var(--brand) 10%, color-mix(in srgb, var(--panel) 70%, transparent)); display: grid; place-items: center; color: color-mix(in srgb, var(--text) 60%, transparent); font-weight: 800; font-size: 28px; }
+  .req{font-size:12px;color:var(--muted)}
+  .list-clean{margin:0;padding-left:18px}
+  .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:#eef2ff;color:#1e40af;border:1px solid #dbeafe}
 
-    /* Sections */
-    section { padding: 42px 0; }
-    h2 { font-size: clamp(22px, 3vw, 32px); margin: 0 0 18px; }
-    .grid { display: grid; gap: 18px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
-
-    .skill { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--panel) 70%, transparent); border: 1px solid color-mix(in srgb, var(--muted) 35%, transparent); }
-    .meter { height: 8px; width: 48%; border-radius: 999px; background: color-mix(in srgb, var(--muted) 25%, transparent); overflow: hidden; }
-    .meter span { display: block; height: 100%; width: var(--value, 70%); background: linear-gradient(90deg, var(--brand), var(--brand-2)); }
-
-    .project { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .badge { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; background: color-mix(in srgb, var(--brand) 10%, transparent); border: 1px solid color-mix(in srgb, var(--brand) 60%, transparent); }
-
-    .timeline { border-left: 2px solid color-mix(in srgb, var(--muted) 35%, transparent); padding-left: 14px; display: grid; gap: 18px; }
-    .when { font-size: 14px; color: var(--muted); }
-
-    footer { padding: 36px 0 60px; color: var(--muted); text-align: center; }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid.cols-3 { grid-template-columns: 1fr; }
-      .grid.cols-2 { grid-template-columns: 1fr; }
-    }
-  </style>
+  footer{padding:36px 0;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
+</style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand"><span class="dot"></span> <span>Aadhitya Varshan Durgadevi Vijaisenthil</span></div>
+      <div class="brand">Your Name</div>
       <nav>
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#cv">CV/Resume</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero -->
-    <section class="hero">
+    <section id="about" class="hero">
       <div>
-        <h1>Hi, I build clean software and ship fast.</h1>
-        <p>Short line about what you do and what you want. Keep it simple. Add the impact you bring.</p>
-        <div class="tagrow">
-          <span class="tag">JavaScript</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">React</span>
-          <span class="tag">Next.js</span>
-        </div>
-        <div class="cta">
-          <a class="btn primary" href="#projects">See Projects</a>
-          <a class="btn ghost" href="mailto:you@example.com">Contact</a>
-        </div>
+        <h1>Short quote or summary line goes here.</h1>
+        <p>Write a short blurb about yourself. Mention your program, year, and what you care about.</p>
       </div>
       <div class="card">
-        <div class="pfp">YO</div>
-        <div style="padding:12px 6px 0; color: var(--muted); font-size:14px;">Drop your headshot here or keep the initials.</div>
+        <img class="pfp" src="assets/headshot.jpg" alt="Professional headshot" />
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-      <h2>About</h2>
-      <div class="card">
-        <p>I solve problems with code. I care about users. I work well with teams. I measure results.</p>
-        <p>One or two sentences about your focus and goals. Keep it direct.</p>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
+    <section id="research">
+      <h2>Research</h2>
       <div class="grid cols-2">
-        <div class="skill"><span>JavaScript / TypeScript</span><div class="meter"><span style="--value:90%"></span></div></div>
-        <div class="skill"><span>React / Next.js</span><div class="meter"><span style="--value:85%"></span></div></div>
-        <div class="skill"><span>Node.js / Express</span><div class="meter"><span style="--value:88%"></span></div></div>
-        <div class="skill"><span>MongoDB / SQL</span><div class="meter"><span style="--value:75%"></span></div></div>
-        <div class="skill"><span>Cloud / CI-CD</span><div class="meter"><span style="--value:70%"></span></div></div>
-        <div class="skill"><span>Testing / QA</span><div class="meter"><span style="--value:68%"></span></div></div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid cols-3">
-        <article class="card project">
-          <div class="badge">Open Source</div>
-          <h3>Project One</h3>
-          <p>One line that says what it does and why it matters. Link the repo and a live demo.</p>
-          <p>
-            <a href="#">Live</a> · <a href="#">Repo</a>
-          </p>
+        <article class="card">
+          <div class="badge">Current Project</div>
+          <h3>Project Title</h3>
+          <p><strong>PI:</strong> Dr. X · <strong>Institution:</strong> UF — Dept Name</p>
+          <p><strong>Time:</strong> Aug 2024 — Present</p>
+          <p><strong>Focus:</strong> Describe research focus in 3–4 lines.</p>
+          <p><strong>Responsibilities:</strong> Describe what you do in the project.</p>
+          <img class="media" src="assets/research1.jpg" alt="Research image" />
         </article>
-        <article class="card project">
-          <div class="badge">Web App</div>
-          <h3>Project Two</h3>
-          <p>One line that shows impact. Mention metrics if you can. Keep it honest.</p>
-          <p>
-            <a href="#">Live</a> · <a href="#">Repo</a>
-          </p>
-        </article>
-        <article class="card project">
-          <div class="badge">Mobile</div>
-          <h3>Project Three</h3>
-          <p>One line that shows skills. Add the stack if helpful.</p>
-          <p>
-            <a href="#">Live</a> · <a href="#">Repo</a>
-          </p>
+        <article class="card">
+          <div class="badge">Past Project</div>
+          <h3>Another Project</h3>
+          <p><strong>PI:</strong> Dr. Y · <strong>Institution:</strong> UF — Dept Name</p>
+          <p><strong>Time:</strong> Jan 2024 — Jul 2024</p>
+          <p><strong>Focus:</strong> Short paragraph on goals.</p>
+          <p><strong>Responsibilities:</strong> List tasks and methods used.</p>
+          <img class="media" src="assets/research2.jpg" alt="Research image" />
         </article>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="coursework">
+      <h2>Coursework</h2>
       <div class="card">
-        <div class="timeline">
-          <div>
-            <strong>Role — Company</strong>
-            <div class="when">2023 — Present · City</div>
-            <div>Short line of impact. What improved and by how much.</div>
-          </div>
-          <div>
-            <strong>Role — Company</strong>
-            <div class="when">2021 — 2023 · City</div>
-            <div>Short line of impact. One more bullet if needed.</div>
-          </div>
+        <p><strong>Major:</strong> Major Name (B.S., University of Florida)</p>
+        <p><strong>Minor:</strong> Optional minor</p>
+        <h3>Selected Courses</h3>
+        <ul>
+          <li>Course 1</li><li>Course 2</li><li>Course 3</li>
+        </ul>
+        <h3>Awards</h3>
+        <ul>
+          <li>Dean’s List — Year</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>CV / Resume</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <a class="btn" href="assets/YourName_CV.pdf" download>Download CV (PDF)</a>
+        </div>
+        <div class="card">
+          <h3>Featured Sections</h3>
+          <ul>
+            <li><strong>Experience:</strong> Role — Org (Year–Year)</li>
+            <li><strong>Skills:</strong> Top skills list</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
-        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/yourusername">@yourusername</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/yourhandle/">/in/yourhandle</a></p>
+        <p>Email: <a href="mailto:gatorid@ufl.edu">gatorid@ufl.edu</a></p>
+        <p>LinkedIn: <a href="#">/in/yourhandle</a></p>
       </div>
     </section>
 
     <footer>
-      <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+      <p>© <span id="year"></span> Your Name — USP E‑Portfolio</p>
     </footer>
   </main>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
